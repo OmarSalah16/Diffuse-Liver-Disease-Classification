@@ -1,0 +1,105 @@
+<html>
+<head>
+  <title>Report Generated</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  
+  <script type="text/javascript">
+    $("#btnPrint").live("click", function () {
+      var divContents = $("#text").html();
+      var divContents0 = $("#text0").html();
+      var divContents1 = $("#text1").html();
+      var divContents2 = $("#text2").html();
+      var divContents3 = $("#text3").html();
+      var divContents4 = $("#text4").html();
+      var divContents5 = $("#text5").html();
+      var divContents6 = $("#text6").html();
+      var divContents7 = $("#text7").html();
+      var divContents8 = $("#text8").html();
+      var printWindow = window.open('', '', 'height=400,width=800');
+      printWindow.document.write('<html><head><title></title>');
+      printWindow.document.write('</head><body >');
+      printWindow.document.write(divContents);
+      printWindow.document.write('<br>');
+      printWindow.document.write(divContents0);
+      printWindow.document.write('<br>');
+      printWindow.document.write('<br>');
+      printWindow.document.write('<br>');
+      printWindow.document.write(divContents1);
+      printWindow.document.write('<br>');
+      printWindow.document.write(divContents2);
+      printWindow.document.write('<br>');
+      printWindow.document.write(divContents3);
+      printWindow.document.write('<br>');
+      printWindow.document.write('<br>');
+      printWindow.document.write(divContents4);
+      printWindow.document.write('<br>');
+      printWindow.document.write('<hr>');
+      printWindow.document.write(divContents5);
+      printWindow.document.write('<br>');
+      printWindow.document.write('<br>');
+      printWindow.document.write(divContents6);
+      printWindow.document.write('<br>');
+      printWindow.document.write('<br>');
+      printWindow.document.write('<br>');
+      printWindow.document.write('<br>');
+      printWindow.document.write(divContents7);
+      printWindow.document.write('<br>');
+      printWindow.document.write(divContents8);
+      printWindow.document.write('<br>');
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+      printWindow.print();
+    });
+  </script>
+  </head>
+  <body>
+    
+    <form id="form1">
+
+    <div id="text">
+      <img src="dlnet.png" alt="DL Net Logo" width="100" height="100">
+    </div>
+        
+    <div id="text0">
+        <strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp DL-Net Diagnosis Report</strong>
+    </div>
+    <br>
+
+    <div id="text1">
+      Registration Date: 12/05/2022 7:12 PM &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Patient Name: Omar Ahmed Salah
+    </div>
+    <br>
+    <div id="text2">
+        Test Date: 16/05/2022 12:02 PM &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Patient ID: 78
+    </div>
+    <br>
+    <div id="text3">
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Patient Age: 22 Years
+    </div>
+    <br>
+    <div id="text4">
+        Referring Doctor: Marwan Ashour
+    </div>
+<br><br>
+    <div id="text5">
+        <strong> Test Name &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Result</strong>
+    </div>
+<br>
+    <div id="text6">
+        DL-Net Automatic Classification &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Hepatosteatosis (Fatty Liver)
+    </div>
+<br>
+    <div id="text7">
+       <strong>Doctor's notes:</strong> 
+    </div>
+    <br>
+
+    <div id="text8">
+        Accurate Classification. Patient suffers from mild Hepatosteatosis.
+    </div>
+    <br>
+
+      <input type="button" value="Download Report" id="btnPrint" />
+    </form>
+  </body>
+</html>
