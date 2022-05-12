@@ -37,9 +37,9 @@ def loadmodel():
     classifiers = ['fatty_cirrhosis', 'normal_cirrhosis', 'normal_fatty']
     for name in classifiers:
         models[name] = [
-            load(open(f"I:/_Marwan Documents/Grad/Django 2/WebApp/models/{name}_mlp.joblib", 'rb')),
-            load(open(f"I:/_Marwan Documents/Grad/Django 2/WebApp/models/{name}_std.joblib", 'rb')),
-            load(open(f"I:/_Marwan Documents/Grad/Django 2/WebApp/models/{name}_cols.joblib", 'rb'))
+            load(open(f"I:/_Marwan Documents/Grad/Django 2/fork/WebApp/models/{name}_mlp.joblib", 'rb')),
+            load(open(f"I:/_Marwan Documents/Grad/Django 2/fork/WebApp/models/{name}_std.joblib", 'rb')),
+            load(open(f"I:/_Marwan Documents/Grad/Django 2/fork/WebApp/models/{name}_cols.joblib", 'rb'))
         ]
     return models
 
@@ -65,7 +65,7 @@ def classify_img(data, models):
 
 def status(path):
     # try:
-    name = 'I:\\_Marwan Documents\\Grad\\Django 2\\WebApp\\media\\scans\\' + str(path)
+    name = 'I:\\_Marwan Documents\\Grad\\Django 2\\fork\\WebApp\\media\\scans\\' + str(path)
     img = sitk.ReadImage(name, sitk.sitkUInt8)
     models = loadmodel()
     data = pd.DataFrame(feature_extraction(img, [(155,94), (94,94)]))
@@ -159,6 +159,11 @@ def patients(request):
             context = {'patients': patients}
             return render(request, 'patients.html', context)
 
+        if request.session['role'] != 'doctor' and request.session['role'] != 'admin':
+            return render(request, 'index.html')
+    else:
+        return render(request, 'index.html')
+
 def doctors(request):
     doctors = Doctor.objects.all()
     context = {'doctors': doctors}
@@ -233,7 +238,7 @@ def addpatient(request):
         
     return render(request, 'addPatient.html')
 
-def addoctor(request):
+def adddoctor(request):
     if request.method == 'POST':
         name = request.POST.get('fullname')
         username = name.replace(" ", "")
@@ -269,8 +274,9 @@ def login(request):
             if patient.password == password:
                 request.session['role'] = 'patient'
                 request.session['id'] = patient.id
+                request.session['name'] = patient.patient_name
                 request.session['loggedin'] = True
-                return redirect('index')
+                return redirect('profile')
         except Patient.DoesNotExist:
             patient = None
 
@@ -281,6 +287,7 @@ def login(request):
                     request.session['is_doctor'] = True
                     request.session['role'] = 'doctor'
                     request.session['id'] = doctor.id
+                    request.session['name'] = doctor.name
                     request.session['loggedin'] = True
                     return redirect('index')
             except Doctor.DoesNotExist:
@@ -291,6 +298,7 @@ def login(request):
                 admin = Admin.objects.get(username=username)
                 if admin.password == password:
                     request.session['role'] = 'admin'
+                    request.session['name'] = admin.name
                     request.session['id'] = admin.id
                     request.session['loggedin'] = True
                     return redirect('index')
@@ -308,6 +316,7 @@ def logout(request):
         del request.session['loggedin']
         del request.session['id']
         del request.session['report']
+        del request.session['newpass']
     except KeyError:
         pass
     return redirect('login')
